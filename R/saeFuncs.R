@@ -41,20 +41,18 @@ mod1Fit <- function(Y, X, Var, sig2B=100, iter=100, burn=50){
   return(list(Preds=preds[,-c(1:burn)], Beta=betaOut[-c(1:burn),], Eta=etaOut[-c(1:burn),]))
 }
 
-
-mod2Fit <- function(Y, X, Psi1, Psi2, Var, sig2B=100, iter=100, burn=50){
+mod2Fit <- function(Y, X, Psi1, Psi2, Var, sig2B = 100, iter = 100, burn = 50){
   n <- length(Y)
   p <- ncol(X)
   r1 <- ncol(Psi1)
   r2 <- ncol(Psi2)
-  C <- cbind(X,Psi1,Psi2)
-  
+  C <- cbind(X, Psi1, Psi2)
   
   sig2RE1 <- 1
   sig2RE2 <- 1
-  eta1 <- rep(0,r1)
-  eta2 <- rep(0,r2)
-  beta <- rep(1,p)
+  eta1 <- rep(0, r1)
+  eta2 <- rep(0, r2)
+  beta <- rep(1, p)
   eta1Out <- matrix(NA, nrow=iter, ncol=r1)
   eta2Out <- matrix(NA, nrow=iter, ncol=r2)
   betaOut <- matrix(NA, nrow=iter, ncol=p)
